@@ -1,5 +1,9 @@
 import "./styles.css";
 
-export default function ProductCategory(props: { name: string }) {
-  return <div className="dsc-category">{props.name}</div>;
+type Props = {
+  name: string;
+};
+
+export default function ProductCategory({ name }: Props) {
+  return <div className="dsc-category">{name}</div>;
 }
