@@ -1,12 +1,23 @@
-import { OrderDTO } from "../models/order";
+import { OrderDTO, OrderItemDTO } from "../models/order";
+import { CART_KEY } from "../utils/system";
 
 export function save(cart: OrderDTO) {
   const string = JSON.stringify(cart);
-  return localStorage.setItem("com.angloso.angloso-commerce/Cart", string);
+  return localStorage.setItem(CART_KEY, string);
 }
 
 export function get(): OrderDTO {
-  const string =
-    localStorage.getItem("com.angloso.angloso-commerce/Cart") || '{"items"=[]}';
-  return JSON.parse(string);
+  const string = localStorage.getItem(CART_KEY) || '{"items":[]}';
+  const obj = JSON.parse(string) as OrderDTO;
+  const cart = new OrderDTO();
+  obj.items.forEach((x) => {
+    cart.items.push(
+      new OrderItemDTO(x.productId, x.quantity, x.name, x.price, x.imgUrl)
+    );
+  });
+  return cart;
+}
+
+export function clear() {
+  localStorage.setItem(CART_KEY, '{"items":[]}');
 }
