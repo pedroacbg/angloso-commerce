@@ -13,7 +13,7 @@ export default function Confirmation() {
     orderService.findByidRequest(Number(params.orderId)).then((response) => {
       setOrder(response.data);
     });
-  }, []);
+  }, [params.orderId]);
 
   return (
     <main>
