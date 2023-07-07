@@ -1,12 +1,13 @@
 import "./styles.css";
 import homeImg from "../../assets/home.svg";
 import productsImg from "../../assets/products.svg";
+import LoggedUser from "../LoggedUser";
 
 export default function HeaderAdmin() {
   return (
     <header className="dsc-header-admin">
       <nav className="dsc-container">
-        <h1>DSC Admin</h1>
+        <h1>Angloso Admin</h1>
         <div className="dsc-navbar-right">
           <div className="dsc-menu-items-container">
             <div className="dsc-menu-item">
@@ -18,10 +19,7 @@ export default function HeaderAdmin() {
               <p className="dsc-menu-item-active">Produtos</p>
             </div>
           </div>
-          <div className="dsc-logged-user">
-            <p>Maria Silva</p>
-            <a href="#">Sair</a>
-          </div>
+          <LoggedUser />
         </div>
       </nav>
     </header>
